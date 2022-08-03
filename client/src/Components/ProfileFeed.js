@@ -1,10 +1,9 @@
-import { useContext, useState, useEffect } from "react"
+import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
 import { AllTweets } from "./HomeFeed";
-import { TweetContext } from "./TweetContext";
 
 const ProfileFeed = () => { 
-    const {tweets, setTweets} = useContext(TweetContext);
+    const {tweets, setTweets} = useState(null);
     const {handle} = useParams()
     useEffect(()=> {
         fetch(`/api/${handle}/feed`)
@@ -17,12 +16,12 @@ const ProfileFeed = () => {
         console.log(useParams());
     
         return(
-            <AllTweets>
+            <div>
                 {!!tweets && tweets.tweetIds.map((tweetId)=>{
             const tweetData = tweets.tweetsById[tweetId]
             return <p>{tweetData.status}</p>
                 })}
-            </AllTweets>
+            </div>
         )
 
 }

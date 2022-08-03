@@ -1,14 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import CurrentUserProvider from './Components/CurrentUserContext';
 import reportWebVitals from './reportWebVitals';
-import { CurrentUserProvider } from './Components/CurrentUserContext';
+import HomeFeedProvider from './Components/HomeFeedContext';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 <CurrentUserProvider>
+<HomeFeedProvider>
   <App />
+</HomeFeedProvider>
 </CurrentUserProvider>
 
 );

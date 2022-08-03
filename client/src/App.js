@@ -6,38 +6,47 @@ import Profile from "./Components/Profile";
 import Notifications from './Components/Notifications';
 import GlobalStyles from './GlobalStyles';
 import Sidebar from './Components/Sidebar';
-import TweetDetails from "./Components/TweetDetails";
-import { TweetContextProvider } from "./Components/TweetContext";
-import ProfileFeed from "./Components/ProfileFeed";
+import {TweetDetails} from "./Components/TweetDetails";
+import Error from "./Components/Error";
+import styled from "styled-components";
+
 
 
 //put the useeffect from current user contex here
 function App() {
   return (
-    <Router>
-      <GlobalStyles />
-      <TweetContextProvider>
-      <Sidebar />
-      <Switch>
-        <Route exact path="/" >
-          <HomeFeed />
-        </Route>
-        <Route path="/notifications">
-          <Notifications />
-        </Route>
-        <Route path="/bookmarks">
-          <Bookmarks />
-        </Route>
-        <Route path="/tweet/:tweetId">
-        <TweetDetails />
-        </Route>
-        <Route path="/:handle">
-          <ProfileFeed />
-        </Route>
-      </Switch>
-      </TweetContextProvider>
-    </Router>
+    <>
+      <Wrapper>
+        <Router>
+          <GlobalStyles />
+          <Sidebar />
+          <Switch>
+            <Route exact path="/" >
+              <HomeFeed />
+            </Route>
+            <Route exact ="/profile/:profileId">
+              <Profile />
+            </Route>
+            <Route path="/notifications">
+              <Notifications />
+            </Route>
+            <Route path="/bookmarks">
+              <Bookmarks />
+            </Route>
+            <Route path="/tweet/:tweetId">
+            <TweetDetails />
+            </Route>
+            <Route path = "/error">
+              <Error />
+            </Route>
+          </Switch>
+        </Router>
+      </Wrapper>
+    </>
   )
 }
+const Wrapper = styled.div`
+  display: flex;
+`
 
 export default App;

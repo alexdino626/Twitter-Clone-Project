@@ -1,8 +1,16 @@
 export const COLORS = {
-    // Bright purple:
-    primary: "hsl(258deg, 100%, 50%)",
-    lightgrey :"hsl(0, 0%, 83%)",
-    lightpurple: "hsl(266, 98%, 75%)",
-    darkviolet: "hsl(282, 100%, 41%)",
+    background: "rgb(240, 248, 255)",
+    black: "hsl(271, 100%, 0%)",
+    hover: "hsl(240, 100%, 27%)",
+    hovertext: "hsl(240, 100%, 27%)",
+    background: "hsl(240, 100%, 27%)",
+    button: "hsl(253, 100%, 61%)",
+
+    ghi: "rgb(123, 45, 71)",
+    jkl: "rgb(186, 85, 91)",
+    mno: "yellow",
+
+    abc: "hsl(300, 100%, 27%)",
+    def: "hsl(240, 100%, 27%)",
     // Add more colors as needed!
     };

@@ -1,37 +1,29 @@
-import { createContext, useReducer, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+export const CurrentUserContext = React.createContext(null);
 
-export const CurrentUserContext = createContext();
-
-export const CurrentUserProvider = ({ children }) => {
+const CurrentUserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
-    const [status, setStatus] = useState(false);
+    const [status, setStatus] = useState("loading");
+  // const [error, setError] = useState(false);
 
-
-
-    useEffect(()=> {
-        fetch('/api/me/profile')
-        .then(res => res.json())
+    const history = useHistory();
+    useEffect(() => {
+    fetch("/api/me/profile")
+        .then((response) => response.json())
         .then((data) => {
-            console.log(data);
-            setCurrentUser(data)
-            // , setStatus(true)
+        setCurrentUser(data);
+        setStatus("idle");
         })
-        }, []);
+        .catch(() => history.push("/error"));
+    }, []);
+    console.log(currentUser);
 
-        // /individual user
-
-
-
-
-    return(
-        <CurrentUserContext.Provider 
-        value={
-            {   currentUser,
-                status,
-                // tweets,
-            }
-        }>
-            {children}
-        </CurrentUserContext.Provider>
+    return (
+    <CurrentUserContext.Provider value={{ currentUser, status }}>
+        {children}
+    </CurrentUserContext.Provider>
     );
 };
+
+export default CurrentUserProvider;

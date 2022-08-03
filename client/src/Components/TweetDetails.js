@@ -1,27 +1,35 @@
-import { useContext, useEffect } from "react";
-import { TweetContext } from "./TweetContext";
-import { CurrentUserContext } from "./CurrentUserContext";
+import React from "react";
+import { useEffect, useState } from "react";
+import { useParams, useHistory } from "react-router-dom";
+import styled from "styled-components";
+import BigTweet from "./BigTweet";
 
-const TweetDetails = () => {
-    
+export const TweetDetails = () => {
+    const [tweet, receiveTweetData] = useState(null);
+    const { tweetId } = useParams();
+
+    const history = useHistory();
     useEffect(() => {
-        fetch("/tweet/:tweetId")
-        .then((res) => res.json())
+    fetch(`/api/tweet/${tweetId}`)
+        .then((response) => response.json())
         .then((data) => {
-            receiveTweetDetails(data);
+            receiveTweetData(data.tweet);
             console.log(data);
-        });
-        }, []);
+        })
+        .catch(() => history.push("/error"));
+    });
 
-        const {
-            state: { tweetIds, tweetsById, id },
-            actions: { receiveTweetDetails },
-            } = useContext(TweetContext);
-            if(!tweetsById) {
-                return <div>Loading</div>
-            }
-
-    return <div>Tweet Details</div>;
+    if (!tweetId) {
+    return <Load>loading...</Load>;
+    }
+    return <BigTweet tweet={tweet}></BigTweet>;
 };
+
+const Load = styled.div`
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+`;
+
 
 export default TweetDetails
