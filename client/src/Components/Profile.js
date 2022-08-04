@@ -43,24 +43,23 @@ const Profile = () => {
             return "loading";
             }
 
-    // const date = moment(profile.joined).format("MMM Do YYYY");
     return(
         <>
         <GlobalStyle/>
             <Wrapper>
-                <Banner src={profile.profile.bannerSrc}/>
-                <Avatar src={profile.profile.avatarSrc}/>
+                <Banner src={profile.bannerSrc}/>
+                <Avatar src={profile.avatarSrc}/>
                 <Following>Following</Following>
-                <Display>{profile.profile.displayName}</Display>
-                <Handle>@ {profile.profile.handle}</Handle>
+                <Display>{profile.displayName}</Display>
+                <Handle>@ {profile.handle}</Handle>
                 <Info>
-                    <FiCalendar/> Joined {" "} {moment(profile.profile.joined).format("MMMM YYYY")}<Space></Space>
+                    <FiCalendar/> Joined {" "} {moment(profile.joined).format("MMMM YYYY")}<Space></Space>
 
-                    <FiMapPin/> {profile.profile.location}
+                    <FiMapPin/> {profile.location}
                 </Info>
                 <Number>
-            {profile.profile.numFollowing} Following <Space></Space>
-            {profile.profile.numFollowers} Followers
+            {profile.numFollowing} Following <Space></Space>
+            {profile.numFollowers} Followers
                 </Number>
                 <ActionBar>
                     <div>Tweets</div>
@@ -75,7 +74,7 @@ const Profile = () => {
         );
 };
 const Number = styled.span`
-    color: ${COLORS.lightGray};
+    color: blueviolet;
     padding-bottom: 25px;
     margin-left: 10px;
 `
@@ -83,7 +82,7 @@ const Space = styled.span`
     margin-right: 10px;
 `
 const Info = styled.span`
-    color: ${COLORS.lightGray};
+    color: blueviolet;
     padding-top: 10px;
     margin-left: 10px;
 `
@@ -94,7 +93,7 @@ const Display = styled.span`
 `
 const Handle = styled.span`
     padding-bottom: 10px;
-    color: ${COLORS.lightGray};
+    color: blueviolet;
     margin-left: 10px;
 `
 const Wrapper = styled.div`
@@ -103,7 +102,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     margin-left: 100px;
     margin-top: 0px;
-    border: 1px solid hsl(238, 10%, 24%);
+    border: 1px solid hsl(240, 100%, 27%);
 `
 const Banner = styled.img`
     max-width: 100;
@@ -127,7 +126,7 @@ const ActionBar = styled.div`
 const Following = styled.button`
     text-decoration: none;
     border: 0;
-    background: ${COLORS.orange};
+    background: blueviolet;
     color: white;
     border-radius: 20px;
     margin-left: 420px;
