@@ -55,7 +55,7 @@ const HomeFeed = () => {
         .catch(() => history.push("/error"));
     };
 
-    const isEnabled = characterCount > 0;
+    const isEnabled = characterCount > 0 && characterCount!==280;
 
     return (
         <Wrapper>
@@ -136,6 +136,9 @@ const Button = styled.button`
     background-color: ${COLORS.button};
     color: white;
     border: none;
+    &:disabled{
+        background-color: gray;
+    }
 `
 const Wrapper = styled.div`
 `

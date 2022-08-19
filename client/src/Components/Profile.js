@@ -23,7 +23,7 @@ const Profile = () => {
         fetch(`/api/${profileId}/profile`)
         .then((response) => response.json())
         .then((data) => {
-            setProfile(data);
+            setProfile(data.profile);
         })
         .catch(() => history.push("/error"));
     }, [profileId]);

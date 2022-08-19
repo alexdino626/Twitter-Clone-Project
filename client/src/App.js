@@ -24,9 +24,6 @@ function App() {
             <Route exact path="/" >
               <HomeFeed />
             </Route>
-            <Route exact ="/profile/:profileId">
-              <Profile />
-            </Route>
             <Route path="/notifications">
               <Notifications />
             </Route>
@@ -35,6 +32,9 @@ function App() {
             </Route>
             <Route path="/tweet/:tweetId">
             <TweetDetails />
+            </Route>
+            <Route exact path="/profile/:profileId">
+              <Profile />
             </Route>
             <Route path = "/error">
               <Error />
